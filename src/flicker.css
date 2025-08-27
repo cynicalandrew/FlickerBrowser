@@ -1,0 +1,254 @@
+@font-face {
+  font-family: 'Terminus';
+  src: url('../assets/TerminusBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Make html and body take full window */
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #4d3a78;
+    font-family: 'Terminus', monospace;
+}
+
+/* Use flex column so webview can expand */
+body {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Terminus', monospace;
+}
+
+/* Title bar */
+#title-bar {
+    padding: 4px 8px 4px 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 32px;
+    background-color: #221042;
+    color: #b71944;
+    -webkit-app-region: drag;
+    flex-shrink: 0;
+}
+
+/* Window buttons */
+#window-buttons button {
+    margin: 4px;
+    border-radius: 8px;
+    background-color: #4d3a78;
+    border: none;
+    color: #4d3a78;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    -webkit-app-region: no-drag;
+}
+
+#minimize, #maximize, #close {
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#minimize:hover { background-color: #753476; color: #ffff; }
+#maximize:hover { background-color: #753476; color: #ffff; }
+#close:hover { background-color: #b71944; color: #ffff; }
+
+/* Tabs container */
+#tabs-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    overflow-x: auto;
+    flex-shrink: 0;
+    padding: 2px;
+}
+
+/* Each tab button: fixed width for all tabs */
+.tab-btn {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 200px; /* all tabs same width */
+    height: 28px;
+    border-radius: 8px;
+    background-color: #4d3a78;
+    border: none;
+    color: #F5C600;
+    cursor: pointer;
+    -webkit-app-region: no-drag;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Terminus', monospace;
+}
+
+/* Hover & active states */
+.tab-btn:hover {
+    background-color: #5d4a88;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.tab-btn.active {
+    background-color: #6b4e9a;
+    color: #fff;
+    border: 1px solid #F5C600;
+    box-shadow: 0 2px 12px rgba(245, 198, 0, 0.3);
+}
+
+/* Tab title inside tab button */
+.tab-btn span:not(.close-tab) {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Close button */
+.close-tab {
+    display: none;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    padding-left: 8px;
+    padding-bottom: 12px;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    background-color: #4d3a78;
+    color: #F5C600;
+    border-radius: 50%;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.close-tab:hover {
+    background-color: #3a2c5a;
+}
+
+/* New tab button */
+#new-tab {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background-color: #4d3a78;
+    border: none;
+    color: #F5C600;
+    cursor: pointer;
+    -webkit-app-region: no-drag;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#new-tab:hover {
+    background-color: #753476;
+    color: #ffff;
+}
+
+/* URL/Search bar */
+#url-bar {
+    display: flex;
+    flex-shrink: 0;
+    height: 32px;
+    margin: 4px;
+    padding: 4px 8px;
+    background-color: #4d3a78;
+    justify-content: center;
+    align-items: center;
+}
+
+#url-bar input {
+    padding: 8px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 8px;
+    background-color: #221042;
+    color: #F5C600;
+    font-family: 'Terminus', monospace;
+    transition: color 0.3s ease;
+}
+
+#url-bar button {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-radius: 8px;
+    margin: 4px;
+    width: 32px;
+    height: 32px;
+    background-color: #221042;
+    color: #F5C600;
+    transition: background-color 0.2s;
+}
+
+#tower-button,
+#refresh-button,
+#back-button,
+#forward-button {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-radius: 8px;
+    margin: 4px;
+    width: 32px;
+    height: 32px;
+    background-color: #221042;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+#refresh-button:hover,
+#back-button:hover,
+#tower-button:hover,
+#forward-button:hover {
+    background-color: #753476;
+}
+
+/* Content containers */
+#content-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+#webviews-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 0px 8px 8px 8px;
+    border-radius: 8px;
+}
+
+#webview {
+    flex-grow: 1;
+    min-height: 0;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+}
+
+/* Tower side panel */
+#tower {
+    width: 0px;
+    margin: 0px;
+    border-radius: 0px;
+    transition: width 0.2s ease, margin 0.2s ease;
+    background-color: #221042;
+}
+
+#tower.collapsed {
+    margin: 0px 8px 8px 0px;
+    border-radius: 8px;
+    width: 350px;
+}

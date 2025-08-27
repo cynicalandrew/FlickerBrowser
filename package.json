@@ -1,0 +1,42 @@
+{
+  "name": "flicker",
+  "version": "1.0.1",
+  "description": "A simple Oneshot inspired Chromium based web browser",
+  "main": "src/flicker.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "keywords": [],
+  "author": "Cynical Andrew",
+  "license": "MIT",
+  "build": {
+    "appId": "com.cynicalandrew.flicker",
+    "productName": "Flicker",
+    "directories": {
+      "buildResources": "build"
+    },
+    "files": [
+      "src/**/*",
+      "main.js",
+      "package.json",
+      "assets/**/*"
+    ],
+    "win": {
+      "icon": "./assets/nikoIcon.ico",
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "devDependencies": {
+    "electron": "^25.9.8",
+    "electron-builder": "^24.13.3"
+  }
+}

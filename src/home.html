@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flicker</title>
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+  <div class="title-container">
+    <img id="niko-img" src="../assets/niko.png" alt="Niko">
+    <div class="text-block">
+      <h1>Flicker</h1>
+      <p id="greeting"></p>
+    </div>
+  </div>
+</header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Weather Section -->
+    <section id="weather">
+      <h2>Weather</h2>
+      <p id="weather-info">Loading...</p>
+    </section>
+
+    <!-- Shortcuts Section -->
+    <section id="shortcuts">
+      <h2>Shortcuts</h2>
+      <div class="links">
+        <a href="https://www.reddit.com">Reddit</a>
+        <a href="https://www.github.com">GitHub</a>
+        <a href="https://www.youtube.com">YouTube</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>Flicker ✦ Cynical Andrew</p>
+  </footer>
+
+  <script>
+    const messages = [
+      "Niko greets you!",
+      "Alula wishes you well",
+      "Your burden is light" 
+    ];
+
+    const greetingEl = document.getElementById('greeting');
+
+    function showRandomGreeting() {
+      const idx = Math.floor(Math.random() * messages.length);
+      greetingEl.textContent = messages[idx];
+    }
+
+    showRandomGreeting();
+
+    // --- Weather Fetch ---
+    async function loadWeather() {
+      try {
+        const locRes = await fetch('http://ip-api.com/json');
+        const locData = await locRes.json();
+        const lat = locData.lat;
+        const lon = locData.lon;
+
+        const apiKey = '04ab67bd8ec4af09f8d69aab5f243888'; // Replace with your API key
+        const weatherRes = await fetch(
+          `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
+        );
+        const weatherData = await weatherRes.json();
+
+        const temp = weatherData.list[0].main.temp;
+        const desc = weatherData.list[0].weather[0].description;
+        const city = weatherData.city.name;
+
+        document.getElementById('weather-info').textContent = `${city}: ${temp}°C, ${desc}`;
+      } catch (err) {
+        console.error(err);
+        document.getElementById('weather-info').textContent = 'Could not load weather.';
+      }
+    }
+
+    loadWeather();
+  </script>
+
+</body>
+</html>

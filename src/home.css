@@ -1,0 +1,124 @@
+/* --- General Styles --- */
+@font-face {
+  font-family: 'Terminus';
+  src: url('./assets/TerminusBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Terminus', monospace;
+  margin: 0;
+  padding: 0;
+  background-color: #221042;
+  color: #F5C600;
+}
+
+/* --- Header --- */
+header {
+  padding: 2rem 1rem 1rem 1rem;
+  border-bottom: 1px solid #4d3a78;
+}
+
+.title-container {
+  display: flex;
+  align-items: center; /* vertically center text with image */
+  justify-content: center; /* align items to the left */
+  gap: 20px;
+}
+
+.text-block {
+  display: flex;
+  flex-direction: column; /* stack heading and greeting */
+  align-items: flex-start; /* left-align text */
+}
+
+#niko-img {
+  width: 160px;
+  height: 160px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 52px;
+  color: #F5C600;
+}
+
+#greeting {
+  margin-top: 0.3rem;
+  font-style: italic;
+  color: #F5C400a0;
+}
+
+/* --- Main Content --- */
+main {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+/* --- Section Cards --- */
+section {
+  background-color: #4d3a78;
+  padding: 1.2rem;
+  border-radius: 12px;
+  min-width: 260px;
+  max-width: 400px;
+  flex: 1 1 300px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+}
+
+/* --- Section Titles --- */
+section h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #F5C600;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* --- Weather Info --- */
+#weather-info {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #F5C600;
+}
+
+/* --- Shortcuts --- */
+#shortcuts .links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+#shortcuts a {
+  background-color: #221042;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  color: #F5C600;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+
+#shortcuts a:hover {
+  background-color: #6b4fb3;
+  transform: scale(1.05);
+}
+
+/* --- Footer --- */
+footer {
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid #4d3a78;
+  font-size: 0.9rem;
+  color: #f5c40099;
+}

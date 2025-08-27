@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Flicker</title>
+    <link rel="stylesheet" href="flicker.css">
+  </head>
+  <body>
+
+    <!-- Title Bar -->
+    <div id="title-bar">
+      <div id="tabs-container">
+        <button id="new-tab" style="width: 28px;">+</button>
+      </div>
+      <div id="window-buttons">
+        <button id="minimize"></button>
+        <button id="maximize"></button>
+        <button id="close"></button>
+      </div>
+    </div>
+
+    <!-- URL Bar -->
+    <div id="url-bar">
+        <img id="back-button" src="../assets/LeftArrowLight.png" width="32" height="32" style="image-rendering: crisp-edges; image-rendering: pixelated;"/>
+        <img id="forward-button" src="../assets/RightArrowLight.png" width="32" height="32" style="image-rendering: crisp-edges; image-rendering: pixelated;"/>
+        <img id="refresh-button" src="../assets/RefreshLight.png" width="32" height="32" style="image-rendering: crisp-edges; image-rendering: pixelated;"/>
+
+        <input type="text" id="url-input" placeholder="Search or enter URL..." />
+
+        <button id="placeholder" style="background-color: #4d3a78;"></button>
+        <button id="placeholder" style="background-color: #4d3a78;"></button>
+        <img id="tower-button" src="../assets/LeftArrowLight.png" width="32" height="32" style="image-rendering: crisp-edges; image-rendering: pixelated;"/>
+    </div>
+
+    <!-- Main Content -->
+    <div id="content-container">
+      <div id="webviews-container"></div>
+      <div id="tower"></div>
+    </div>
+
+    <script src="processes.js"></script>
+  </body>
+</html>
